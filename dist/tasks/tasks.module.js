@@ -10,10 +10,13 @@ exports.TasksModule = void 0;
 const common_1 = require("@nestjs/common");
 const tasks_controller_1 = require("./tasks.controller");
 const tasks_service_1 = require("./tasks.service");
+const mongoose_1 = require("@nestjs/mongoose");
+const tasks_schema_1 = require("./schemas/tasks.schema");
 let TasksModule = class TasksModule {
 };
 TasksModule = __decorate([
     common_1.Module({
+        imports: [mongoose_1.MongooseModule.forFeature([{ name: 'Task', schema: tasks_schema_1.TaskSchema }])],
         controllers: [tasks_controller_1.TasksController],
         providers: [tasks_service_1.TasksService]
     })
